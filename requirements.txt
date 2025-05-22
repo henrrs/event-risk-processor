@@ -1,0 +1,6 @@
+fastapi
+uvicorn[standard]
+google-cloud-pubsub
+google-cloud-firestore
+openai
+python-dotenv

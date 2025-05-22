@@ -1,0 +1,21 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/event-risk-processor', '.']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/event-risk-processor']
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - event-risk-processor
+      - --image=gcr.io/$PROJECT_ID/event-risk-processor
+      - --platform=managed
+      - --region=us-central1
+      - --allow-unauthenticated
+      - --set-env-vars=GCP_PROJECT_ID=$PROJECT_ID,INPUT_TOPIC=input-topic-name,OUTPUT_TOPIC=output-topic-name,OPENAI_API_KEY=your_openai_key_here
+
+images:
+  - gcr.io/$PROJECT_ID/event-risk-processor

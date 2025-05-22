@@ -1,0 +1,8 @@
+import os
+
+GCP_PROJECT_ID = os.getenv("GCP_PROJECT_ID")
+INPUT_TOPIC = os.getenv("INPUT_TOPIC")
+OUTPUT_TOPIC = os.getenv("OUTPUT_TOPIC")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+FIRESTORE_COLLECTION = "risk_assessments"
+EVENT_WINDOW_MINUTES = 5
