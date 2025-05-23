@@ -18,7 +18,6 @@ RUN pip install --no-cache-dir --upgrade pip && \
 
 # Copia o restante do código
 COPY app/ ./app/
-COPY app/main.py .
 
 # Expõe a porta padrão do Cloud Run
 EXPOSE 8080
