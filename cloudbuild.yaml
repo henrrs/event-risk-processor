@@ -15,7 +15,7 @@ steps:
       - --platform=managed
       - --region=us-central1
       - --allow-unauthenticated
-      - --set-env-vars=GCP_PROJECT_ID=$PROJECT_ID,INPUT_TOPIC=input-topic-name,OUTPUT_TOPIC=output-topic-name,OPENAI_API_KEY=your_openai_key_here
+      - --set-env-vars=GCP_PROJECT_ID=$PROJECT_ID,INPUT_TOPIC=input-topic-name,OUTPUT_TOPIC=output-topic-name,OPENAI_API_KEY=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
 
 images:
   - gcr.io/$PROJECT_ID/event-risk-processor
