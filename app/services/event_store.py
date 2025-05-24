@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from typing import List
 from google.cloud import firestore
+from google.cloud.firestore_v1.base_query import FieldFilter
 from app.models import ClientEvent, GenAIResponse
 
 db = firestore.Client()

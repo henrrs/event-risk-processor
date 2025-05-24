@@ -15,7 +15,10 @@ steps:
       - --platform=managed
       - --region=southamerica-east1
       - --allow-unauthenticated
-      - --set-env-vars=GCP_PROJECT_ID=$PROJECT_ID,INPUT_TOPIC=input-topic,OUTPUT_TOPIC=output-topic,OPENAI_API_KEY=YOUR_OPENAI_API_KEY
+      - --memory=128
+      - --max-instances=1
+      - --update-secrets=OPENAI_API_KEY=open_api_key:1
+      - --set-env-vars=GCP_PROJECT_ID=$PROJECT_ID,INPUT_TOPIC=input-topic,OUTPUT_TOPIC=output-topic
 
 images:
   - gcr.io/$PROJECT_ID/event-risk-processor
