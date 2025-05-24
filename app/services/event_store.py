@@ -16,8 +16,8 @@ async def get_recent_events(client_id: str) -> List[ClientEvent]:
     cutoff = datetime.utcnow() - timedelta(minutes=EVENT_WINDOW_MINUTES)
 
     docs = client_events_ref.where(
-            filter=("client_id", "==", client_id)
-        ).where(filter=("timestamp", ">=", cutoff)).stream()
+            filter=FieldFilter("client_id", "==", client_id)
+        ).where(filter=FieldFilter("timestamp", ">=", cutoff)).stream()
 
     return [ClientEvent(**doc.to_dict()) for doc in docs]
 
