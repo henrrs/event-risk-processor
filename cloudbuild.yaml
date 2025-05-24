@@ -15,7 +15,7 @@ steps:
       - --platform=managed
       - --region=southamerica-east1
       - --allow-unauthenticated
-      - --memory=128
+      - --memory=128Mi
       - --max-instances=1
       - --update-secrets=OPENAI_API_KEY=open_api_key:1
       - --set-env-vars=GCP_PROJECT_ID=$PROJECT_ID,INPUT_TOPIC=input-topic,OUTPUT_TOPIC=output-topic
