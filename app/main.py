@@ -5,7 +5,8 @@ from datetime import datetime, timedelta
 from typing import List, Dict
 import base64
 
-from fastapi import FastAPI, Request, JSONResponse
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
 from app.models import ClientEvent
 from app.services.event_store import store_event, get_recent_events, store_audit_log
 from app.services.prompt_builder import build_prompt
