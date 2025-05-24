@@ -11,9 +11,14 @@ async def store_event(event: ClientEvent):
     db.collection("client_events").add(event.dict())
 
 async def get_recent_events(client_id: str) -> List[ClientEvent]:
+    client_events_ref = db.collection("client_events")
+
     cutoff = datetime.utcnow() - timedelta(minutes=EVENT_WINDOW_MINUTES)
-    query = db.collection("client_events").where(filter=("client_id", "==", client_id)).where(filter=("timestamp", ">=", cutoff))
-    docs = query.stream()
+
+    docs = client_events_ref.where(
+            filter=("client_id", "==", client_id)
+        ).where(filter=("timestamp", ">=", cutoff)).stream()
+
     return [ClientEvent(**doc.to_dict()) for doc in docs]
 
 async def store_audit_log(client_id: str, events: List[ClientEvent], response: GenAIResponse):
