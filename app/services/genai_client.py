@@ -6,7 +6,7 @@ openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 async def query_genai(prompt: str) -> GenAIResponse:
     completion = openai_client.chat.completions.create(
-        model="gpt-4",
+        model="chatgpt-4o-latest",
         messages=[{"role": "user", "content": prompt}],
         temperature=0.2
     )
