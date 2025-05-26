@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timezone
 from typing import List
 from google.cloud import firestore
 from google.cloud.firestore_v1.base_query import FieldFilter
@@ -16,7 +16,7 @@ async def get_recent_events(client_id: str) -> List[ClientEvent]:
 
     print(client_events_ref)
 
-    cutoff = datetime.utcnow() - timedelta(minutes=EVENT_WINDOW_MINUTES)
+    cutoff = datetime.now(timezone.utc) - timedelta(minutes=EVENT_WINDOW_MINUTES)
 
     print(cutoff)
 
