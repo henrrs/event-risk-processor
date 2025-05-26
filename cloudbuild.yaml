@@ -25,5 +25,5 @@ images:
 
 options:
   logging: CLOUD_LOGGING_ONLY
-  pool:
-    name: 'projects/opportune-ruler-349816/locations/southamerica-east1/workerPools/cloudbuild-pool'
+#  pool:
+#    name: 'projects/opportune-ruler-349816/locations/southamerica-east1/workerPools/cloudbuild-pool'

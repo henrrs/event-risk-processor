@@ -31,6 +31,7 @@ async def receive_event(request: Request):
 
         recent_events = await get_recent_events(event.client_id)
         prompt = build_prompt(recent_events)
+        print(f"Prompt generated: {prompt}")
         response = await query_genai(prompt)
 
         await publish_to_output_topic(event.client_id, response)
