@@ -30,12 +30,15 @@ async def receive_event(request: Request):
         await store_event(event)
 
         recent_events = await get_recent_events(event.client_id)
-        prompt = build_prompt(recent_events)
-        print(f"Prompt generated: {prompt}")
-        response = await query_genai(prompt)
 
-        await publish_to_output_topic(event.client_id, response)
-        await store_audit_log(event.client_id, recent_events, response)
+        print(recent_events)
+        
+        #prompt = build_prompt(recent_events)
+        #print(f"Prompt generated: {prompt}")
+        #response = await query_genai(prompt)
+
+        #await publish_to_output_topic(event.client_id, response)
+        #await store_audit_log(event.client_id, recent_events, response)
 
         return JSONResponse(content={"status": "processed"}, status_code=200)
 

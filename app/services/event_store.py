@@ -14,11 +14,17 @@ async def store_event(event: ClientEvent):
 async def get_recent_events(client_id: str) -> List[ClientEvent]:
     client_events_ref = db.collection("client_events")
 
+    print(client_events_ref)
+
     cutoff = datetime.utcnow() - timedelta(minutes=EVENT_WINDOW_MINUTES)
+
+    print(cutoff)
 
     docs = client_events_ref.where(
             filter=FieldFilter("client_id", "==", client_id)
         ).where(filter=FieldFilter("timestamp", ">=", cutoff)).stream()
+
+    print(docs)
 
     return [ClientEvent(**doc.to_dict()) for doc in docs]
 
